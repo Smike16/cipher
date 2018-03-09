@@ -59,9 +59,12 @@ function encode(string) {
 
     for (let i = 0; i < string.length; i += 1) {
         const char = string[i];
-        const charMaxIndex = encodeDictionary[char].length - 1;
 
-        result += encodeDictionary[char][getRandom(0, charMaxIndex)];
+        if (encodeDictionary.hasOwnProperty(char)) {
+            const charMaxIndex = encodeDictionary[char].length - 1;
+
+            result += encodeDictionary[char][getRandom(0, charMaxIndex)];
+        }
     }
 
     return result;
@@ -80,7 +83,9 @@ function decode(string) {
     for (let i = 0; i < chars.length; i += 1) {
         const char = chars[i];
 
-        result += decodeDictionary[char];
+        if (decodeDictionary.hasOwnProperty(char)) {
+            result += decodeDictionary[char];
+        }
     }
 
     return result;
