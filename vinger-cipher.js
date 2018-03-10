@@ -52,6 +52,7 @@ const square = alphabet.reduce((square, _, index) => {
  * @returns {string}
  */
 function encode(key, string) {
+    string = string.split(' ').join('');
     let result = '';
 
     const longKey = getLongKey(key, string);
@@ -131,5 +132,5 @@ function getLongKey(key, string) {
     return longKey;
 }
 
-encode('white', 'divert'); // 'zpdxvp'
-decode('white', 'zpdxvp'); // 'divert'
+encode('white', 'hello world'); // dltessvzeh
+decode('white', 'dltessvzeh'); // helloworld
